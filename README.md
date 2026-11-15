@@ -15,7 +15,7 @@ Use Node.js 24, run `npm ci`, and copy `.env.example` to `.env.local`. Public Su
 
 In a fresh Supabase project, apply `supabase/marketplace.sql` followed by `supabase/connect.sql`. Sellers and orders have RLS and no public grants. Payment functions use invoker privileges and can only be called by the server role. Buyer messages have insert permission but no public reads.
 
-Set `APP_URL` to the exact application origin. Run `npm run dev -- --port 3003` for local work. Create and deploy the app's own Vercel project with all environment values except the webhook secret, then run:
+Enable Connect in your selected Stripe sandbox before starting seller onboarding. Set `APP_URL` to the exact application origin. Run `npm run dev -- --port 3003` for local work. Create and deploy the app's own Vercel project with all environment values except the webhook secret, then run:
 
 ```powershell
 node --env-file=.env.local scripts/create-webhook.mjs
@@ -35,6 +35,6 @@ npm run build
 Run `supabase/verify-connect.sql` as an administrator for transactional database assertions. It rolls back its fixtures. Verify onboarding, Checkout with 4242 4242 4242 4242, the confirmation page, private order persistence, fee split and Sold status on the production site. Screenshots and final verification status will be recorded in TESTING.md.
 
 ## Limits
-This hiring challenge explicitly uses email-only seller identity and a shared Stripe sandbox. It does not verify email ownership. Add real authentication, seller ownership checks, abuse controls, refunds/disputes and production operational controls before accepting real money. No shipping, tax, email notification, seller inbox or real payout to a bank is included. No application is submitted automatically.
+This hiring challenge uses email-only seller identity. The app now uses a separate sandbox because the provided shared sandbox reached its webhook-endpoint limit. It does not verify email ownership. Add real authentication, seller ownership checks, abuse controls, refunds/disputes and production operational controls before accepting real money. No shipping, tax, email notification, seller inbox or real payout to a bank is included. No application is submitted automatically.
 
 Brief: https://tremendous-tiger-a4a.notion.site/Test-4-Stripe-Connect-41400bbdfc3b80a2909add50ab807591
