@@ -1,0 +1,2 @@
+# Inherited marketplace visual system
+Preserve Test 3's blue masthead, pale blue-gray page surfaces, white form panels, Arial type, compact category sidebar and photo grid. New seller onboarding and order confirmation are task pages in this same Operate surface. Blue primary buttons, clear field labels, inline validation, visible keyboard focus and stacked mobile layouts. Do not redesign the established world.

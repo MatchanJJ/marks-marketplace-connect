@@ -1,0 +1,8 @@
+[
+  {"category":"Electronics","title":"Silver laptop (mock)","price_cents":22500,"details":"A lightweight silver laptop for a study desk or home office.","photo":"laptop.jpg","credit":"AS Photography","source":"https://www.pexels.com/photo/silver-laptop-computer-on-table-291777/"},
+  {"category":"Furniture","title":"Armchair and footstool (mock)","price_cents":9500,"details":"A cozy beige armchair with a matching footstool. Other accessories shown are excluded.","photo":"armchair.jpg","credit":"Vlada Karpovich","source":"https://www.pexels.com/photo/armchair-with-footstool-4939652/"},
+  {"category":"Clothing","title":"Blue denim jacket (mock)","price_cents":2800,"details":"A classic blue denim jacket with button details and front pockets.","photo":"jacket.jpg","credit":"AI25.Studio","source":"https://www.pexels.com/photo/blue-denim-button-up-jacket-6843224/"},
+  {"category":"Books","title":"Vintage book bundle (mock)","price_cents":1800,"details":"A small bundle of vintage hardback books for a reading nook.","photo":"books.jpg","credit":"Suzy Hazelwood","source":"https://www.pexels.com/photo/stacked-books-1333742/"},
+  {"category":"Sports","title":"Outdoor basketball (mock)","price_cents":1500,"details":"An orange basketball for casual games at the local court.","photo":"basketball.jpg","credit":"RDNE Stock project","source":"https://www.pexels.com/photo/ball-on-a-basketball-court-8336954/"},
+  {"category":"Other","title":"Potted cactus (mock)","price_cents":1200,"details":"A small potted cactus to add a little green to a sunny shelf.","photo":"plant.jpg","credit":"Antonio Prado","source":"https://www.pexels.com/photo/potted-plant-3075988/"}
+]
