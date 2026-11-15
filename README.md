@@ -21,7 +21,7 @@ Enable Connect in your selected Stripe sandbox before starting seller onboarding
 node --env-file=.env.local scripts/create-webhook.mjs
 ```
 
-The script registers only this app's Connect endpoint and saves its one-time signing secret directly into the ignored local environment file, without printing it. Add `STRIPE_WEBHOOK_SECRET` to Vercel and redeploy. Never delete another candidate's endpoint from the shared sandbox.
+The script registers only this app's Connect endpoint, verifies its connected-account scope, and saves its one-time signing secret directly into the ignored local environment file without printing it. It disables only this app's earlier account-scoped endpoints when replacing an incorrectly scoped registration. Add `STRIPE_WEBHOOK_SECRET` to Vercel and redeploy. Never delete another candidate's endpoint from the shared sandbox.
 
 Run `npm run seed:mock` to populate six labelled stock-photo listings. Image sources are in PHOTO-CREDITS.md. Connect `demo@example.com` with Stripe using sandbox identity/bank data to make those listings purchasable.
 
@@ -32,7 +32,7 @@ npm run typecheck
 npm run build
 ```
 
-Run `supabase/verify-connect.sql` as an administrator for transactional database assertions. It rolls back its fixtures. Verify onboarding, Checkout with 4242 4242 4242 4242, the confirmation page, private order persistence, fee split and Sold status on the production site. Screenshots and final verification status will be recorded in TESTING.md.
+Run `supabase/verify-connect.sql` as an administrator for transactional database assertions. It rolls back its fixtures. Verify onboarding, Checkout with 4242 4242 4242 4242, the confirmation page, private order persistence, fee split and Sold status on the production site. Final verification status is recorded in TESTING.md. Screenshots and sanitized payment proof are delivered privately to the app owner.
 
 ## Limits
 This hiring challenge uses email-only seller identity. The app now uses a separate sandbox because the provided shared sandbox reached its webhook-endpoint limit. It does not verify email ownership. Add real authentication, seller ownership checks, abuse controls, refunds/disputes and production operational controls before accepting real money. No shipping, tax, email notification, seller inbox or real payout to a bank is included. No application is submitted automatically.
