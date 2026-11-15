@@ -64,15 +64,16 @@ export async function onboardingLink(email: string, create: boolean) {
   let accountId = existing.data?.stripe_account_id;
   if (!accountId) {
     if (!create) throw new PaymentError("Start seller onboarding first.",404);
-    const account = await stripe.accounts.create({ type: "express",country: "US",email,
-      capabilities: { card_payments: { requested: true },transfers: { requested: true } },
-      metadata: { app: PAYMENT_APP },business_profile: { url: origin,product_description: "Sandbox marketplace for second-hand goods; test payments only." },
-    },{ idempotencyKey: PAYMENT_APP+":"+createHash("sha256").update(email).digest("hex") });
+    const account = await stripe.v2.core.accounts.create({ contact_email: email,dashboard: "full",identity: { country: "US" },
+      defaults: { responsibilities: { fees_collector: "stripe",losses_collector: "stripe" } },
+      configuration: { merchant: { capabilities: { card_payments: { requested: true } } } },
+      metadata: { app: PAYMENT_APP },
+    },{ idempotencyKey: PAYMENT_APP+":v2:"+createHash("sha256").update(email).digest("hex") });
     accountId = account.id;
     const saved = await db.from("sellers").upsert({ email,stripe_account_id: accountId },{ onConflict: "email",ignoreDuplicates: true });
     if (saved.error) throw saved.error;
   }
-  return stripe.accountLinks.create({ account: accountId,type: "account_onboarding",
+  return stripe.v2.core.accountLinks.create({ account: accountId,use_case: { type: "account_onboarding",account_onboarding: {
     refresh_url: origin+"/api/connect/refresh?email="+encodeURIComponent(email),
-    return_url: origin+"/connect?returned=1&email="+encodeURIComponent(email) });
+    return_url: origin+"/connect?returned=1&email="+encodeURIComponent(email) } } });
 }

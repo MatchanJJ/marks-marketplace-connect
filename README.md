@@ -4,7 +4,7 @@ A standalone copy of the Test 3 marketplace with sandbox Stripe Connect payments
 
 ## Features
 - Public photo listings, category filters, title search, listing detail pages and private buyer messages.
-- Seller email starts Stripe-hosted Express onboarding; the connected account is stored privately in Supabase.
+- Seller email starts Stripe-hosted onboarding with the full Stripe Dashboard and Stripe-managed risk; the connected account is stored privately in Supabase.
 - Only ready sellers' items priced at least $0.50 can open Stripe-hosted Checkout. Free/lower-priced items use messaging.
 - Direct charges on the seller's connected account collect a 10% application fee, rounded down to cents. Stripe processing fees are separate.
 - Signed Connect webhooks verify the exact app, account, order, session, total and currency, then atomically confirm the order and mark the listing Sold. Replays are idempotent.
